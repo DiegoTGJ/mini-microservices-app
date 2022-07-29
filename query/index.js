@@ -23,13 +23,22 @@ app.post("/events", (req, res) => {
   }
 
   if (type === "CommentCreated") {
-    const { id, content, postId } = data;
+    const { id, content, postId, status } = data;
 
     const post = posts[postId];
-    post.comments.push({ id, content });
+    post.comments.push({ id, content, status });
     res.send({});
   }
+  if (type === "CommentUpdated") {
+    const { id, content, postId, status } = data;
+    const post = posts[postId];
+    const comment = post.comments.find((comment) => comment.id === id);
+
+    comment.status = status;
+    comment.content = content;
+  }
 });
+
 app.listen(port, () =>
   console.log("> Server is up and running on port : " + port)
 );
