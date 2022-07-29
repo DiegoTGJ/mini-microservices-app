@@ -10,8 +10,12 @@ const port = process.env.PORT || 4005;
 // you need to install the following libraries |express|[dotenv > if required]
 // or run this command >> npm i express dotenv
 
+const events = [];
+
 app.post("/events", (req, res) => {
   const event = req.body;
+
+  events.push(event);
 
   axios
     .post("http://localhost:4000/events", event)
@@ -27,6 +31,10 @@ app.post("/events", (req, res) => {
     .catch((err) => console.log(err));
 
   res.send({ status: "Ok" });
+});
+
+app.get("/events", (req, res) => {
+  res.send(events);
 });
 
 app.listen(port, () =>
