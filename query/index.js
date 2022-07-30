@@ -47,7 +47,7 @@ app.listen(port, async () => {
   console.log("> Server is up and running on port : " + port);
 
   const res = await axios
-    .get("http://event-bus:4005/events")
+    .get("http://event-bus-srv:4005/events")
     .catch((err) => console.log(err));
 
   res.data.forEach((event) => {

@@ -6,7 +6,7 @@ services:
       context: client
     ports:
       - 3000:3000
-  posts:
+  posts-clusterip-srv:
     build:
       context: posts
     ports:
@@ -16,7 +16,7 @@ services:
       context: comments
     ports:
       - 4001:4001
-  event-bus:
+  event-bus-srv:
     build:
       context: event-bus
     ports:
