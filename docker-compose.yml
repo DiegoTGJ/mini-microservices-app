@@ -11,7 +11,7 @@ services:
       context: posts
     ports:
       - 4000:4000
-  comments:
+  comments-srv:
     build:
       context: comments
     ports:
@@ -21,12 +21,12 @@ services:
       context: event-bus
     ports:
       - 4005:4005
-  moderation:
+  moderation-srv:
     build:
       context: moderation
     ports:
       - 4003:4003
-  query:
+  query-srv:
     build:
       context: query
     ports:
